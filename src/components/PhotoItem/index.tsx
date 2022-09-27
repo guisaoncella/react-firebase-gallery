@@ -7,8 +7,8 @@ type Props = {
 
 export const PhotoItem = ({url, name}: Props) => {
     return(
-        <Container>
-            <img src={url} alt={name} />
+        <Container className="image">
+            <img src={url} alt={name}/>
         </Container>
     )
 }
