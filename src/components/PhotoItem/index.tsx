@@ -1,14 +1,16 @@
+import { Photo } from "../../types/Photo";
 import { Container } from "./styles";
 
 type Props = {
-    url: string;
-    name: string;
+    item: Photo
+    handleDelete: (item: Photo) => void
 }
 
-export const PhotoItem = ({url, name}: Props) => {
+export const PhotoItem = ({item, handleDelete}: Props) => {
     return(
         <Container className="image">
-            <img src={url} alt={name}/>
+            <img src={item.url} alt={item.name}/>
+            <span className="emoji" onClick={() => handleDelete(item)}>🗑</span>
         </Container>
     )
 }

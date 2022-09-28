@@ -46,6 +46,21 @@ function App() {
         }
     }
 
+    const handleDelete = async (item: Photo) => {
+        let newPhotoList = [...photos]
+        let index = newPhotoList.indexOf(item)
+        
+        if (index > -1) {
+            await Photos.deletePhoto(item)
+            newPhotoList.splice(index, 1);
+        }else{
+            alert('Erro!')
+        }
+        setPhotos(newPhotoList) 
+
+        alert('Deletado com sucesso!')
+    }
+
     return (
         <Container>
             <Area>
@@ -66,7 +81,7 @@ function App() {
                 {!loading && photos.length > 0 &&
                     <PhotoList>
                         {photos.map((item, index)=>(
-                            <PhotoItem key={index} url={item.url} name={item.name} />
+                            <PhotoItem key={index} item={item} handleDelete={handleDelete} />
                         ))}
                     </PhotoList>    
                 }

@@ -1,6 +1,6 @@
 import { Photo } from "../types/Photo"
 import { storage } from "../libs/firebase"
-import {ref, listAll, getDownloadURL, uploadBytes} from 'firebase/storage'
+import {ref, listAll, getDownloadURL, uploadBytes, deleteObject} from 'firebase/storage'
 import { v4 } from "uuid"
 
 export const getAll = async () => {
@@ -37,4 +37,9 @@ export const sendPhoto = async (file: File) => {
         name: upload.ref.name,
         url: photoUrl
     } as Photo
+}
+
+export const deletePhoto = async (item: Photo) => {
+    let reference = ref(storage, `/images/${item.name}`)
+    await deleteObject(reference)
 }
