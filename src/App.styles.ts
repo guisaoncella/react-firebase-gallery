@@ -32,7 +32,7 @@ export const PhotoList = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 
-    &:has(img:hover) .image:not(:hover){
+    &:has(.image:hover) .image:not(:hover){
         scale: 0.7;
         filter: grayscale(80%);
         transition: all 400ms ease;
